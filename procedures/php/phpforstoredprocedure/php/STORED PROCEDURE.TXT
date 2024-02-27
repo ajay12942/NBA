@@ -1,0 +1,15 @@
+#stored procedures
+    
+$spforage = mysqli_query($conn, "CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchAge`(IN `page` INT(11)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT P_NAME,P_AGE,P_STATE FROM PLAYERS P WHERE P.P_AGE = page;"); 
+
+$spfornationality = mysqli_query($conn, "CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchNationality`(IN `page` VARCHAR(30)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM personal_details WHERE personal_details.nationality=page;"); 
+
+$spforoverallrating = mysqli_query($conn, "CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchOverallRating`(IN `page` INT(11)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM personal_details WHERE personal_details.overall_rating = page;"); 
+
+$spforteam = mysqli_query($conn, "CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchTeam`(IN `page` VARCHAR(30)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT pd.player_name,pd.overall_rating,pd.age,pd.nationality,od.club FROM personal_details pd,other_details od WHERE od.club = page AND pd.player_id = od.player_id ORDER BY pd.player_id;"); 
+
+$spforname = mysqli_query($conn, "CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchName`(IN `page` VARCHAR(30)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM personal_details WHERE player_name = page");
+
+$spforplayerid = mysqli_query($conn, "CREATE DEFINER=`root`@`localhost` PROCEDURE `Searchplayerid`(IN `page` INT(11)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM personal_details WHERE player_id = page;");
+
+$spforposition = mysqli_query($conn, "CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchPosition`(IN `page` VARCHAR(11)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT pd.player_name, pd.overall_rating, od.preferred_position, p.gk, p.df, p.cm, p.fr FROM personal_details pd, other_details od, position p WHERE od.preferred_position = page AND p.player_id = od.player_id AND p.player_id = pd.player_id GROUP BY pd.player_id;"); 
