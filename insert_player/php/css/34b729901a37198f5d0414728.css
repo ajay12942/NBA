@@ -16,9 +16,8 @@
 
 html,
 body {
-	background: black;
+  background: linear-gradient(to right top, #FFD700, #FFA500, #FF8C00, #FF7F50, #FF6347);
 }
-
 body {
   position: fixed;
   display: block;

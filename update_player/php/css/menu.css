@@ -31,7 +31,7 @@
   font-size: 14px;
 }
 .menu li:hover {
-  background: #e74c3c;
+  background: orange;
 }
 .menu > li > a {
   -webkit-transform: skewX(-25deg);
