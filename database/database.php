@@ -51,6 +51,8 @@ die("Connection failed: " . $conn->connect_error);
           <th>NAME</th>
           <th>AGE</th>
           <th>STATE</th>
+          <th>AVERAGE SPECIFIC PERFORMANCE</th>
+          <th>AVERAGE GENERAL PERFORMANCE</th>
         </tr>
       </thead>
     </table>
@@ -59,7 +61,7 @@ die("Connection failed: " . $conn->connect_error);
 <table cellpadding="0" cellspacing="0" border="0">
 <!--<tbody>-->
 <?php
-$sql = "SELECT * FROM players ORDER BY PLAYER_ID";
+$sql = "SELECT * FROM players P, PERFORMANCE PR WHERE P.PLAYER_ID=PR.PLAYER_ID ORDER BY P.PLAYER_ID";
 $result = $conn->query($sql);
 if ($result->num_rows >0 ) {
     while($row = $result->fetch_assoc()) { 
@@ -69,6 +71,8 @@ if ($result->num_rows >0 ) {
           echo "<td>" .$row["P_NAME"]. "</td>";
           echo "<td>" .$row["P_AGE"]. "</td>";
           echo "<td>" .$row["P_STATE"]. "</td>";
+          echo "<td>" .$row["SP_AVG"]. "</td>";
+          echo "<td>" .$row["GP_AVG"]. "</td>";
          echo "</tr>";
         echo "</tbody>";
     }
