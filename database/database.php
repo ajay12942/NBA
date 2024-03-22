@@ -61,7 +61,10 @@ die("Connection failed: " . $conn->connect_error);
 <table cellpadding="0" cellspacing="0" border="0">
 <!--<tbody>-->
 <?php
-$sql = "SELECT * FROM players P, PERFORMANCE PR WHERE P.PLAYER_ID=PR.PLAYER_ID ORDER BY P.PLAYER_ID";
+$sql = "SELECT P.*, PR.SP_AVG, PR.GP_AVG
+FROM players P
+LEFT JOIN performance PR ON P.PLAYER_ID = PR.PLAYER_ID
+ORDER BY P.PLAYER_ID";
 $result = $conn->query($sql);
 if ($result->num_rows >0 ) {
     while($row = $result->fetch_assoc()) { 
@@ -71,8 +74,8 @@ if ($result->num_rows >0 ) {
           echo "<td>" .$row["P_NAME"]. "</td>";
           echo "<td>" .$row["P_AGE"]. "</td>";
           echo "<td>" .$row["P_STATE"]. "</td>";
-          echo "<td>" .$row["SP_AVG"]. "</td>";
-          echo "<td>" .$row["GP_AVG"]. "</td>";
+          echo "<td>" . ($row["SP_AVG"] ?? "N/A") . "</td>";
+          echo "<td>" . ($row["GP_AVG"] ?? "N/A") . "</td>";
          echo "</tr>";
         echo "</tbody>";
     }
