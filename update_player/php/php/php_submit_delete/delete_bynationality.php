@@ -32,7 +32,7 @@ $spnationality = $_POST["pnationality"];
 <li><a href="../../../../database/database.php">Database</a></li>
 <li><a href="../../../../report/project_report.html">Report</a></li>
 <li><a href="../../../../procedures/procedures.html">Procedures</a></li>
-<li><a href="../../../../about/about.html">About</a></li>
+
 </ul>
 
 <?php
