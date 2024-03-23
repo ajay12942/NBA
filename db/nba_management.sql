@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 27, 2024 at 10:49 AM
+-- Generation Time: Mar 23, 2024 at 03:02 PM
 -- Server version: 8.0.36
 -- PHP Version: 8.2.13
 
@@ -27,9 +27,6 @@ DELIMITER $$
 --
 DROP PROCEDURE IF EXISTS `SearchAge`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchAge` (IN `page` INT(11))   SELECT P_NAME,P_AGE,P_STATE FROM PLAYERS P WHERE P.P_AGE = page$$
-
-DROP PROCEDURE IF EXISTS `SearchAge1`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchAge1` (IN `page` INT(11))   SELECT P_NAME,P_AGE,P_STATE FROM PLAYERS P WHERE P.P_AGE = page$$
 
 DROP PROCEDURE IF EXISTS `SearchName`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchName` (IN `page` VARCHAR(30))   SELECT * FROM personal_details WHERE player_name = page$$
@@ -70,8 +67,21 @@ CREATE TABLE IF NOT EXISTS `club` (
 --
 
 INSERT INTO `club` (`PLAYER_ID`, `C_NAME`, `PREFFERED_POS`) VALUES
-(1, 'mountain', 'Post guard'),
-(2, 'sea', 'POWER FORWARD');
+(1, 'Punjab Steelers', 'Point Guard'),
+(2, 'Chennai Slam', 'Power Forward'),
+(3, 'Hyderabad Sky', 'Point Guard'),
+(4, 'Mumbai Challengers', 'Shooting Guard'),
+(5, 'Delhi Capitals', 'Small Forward'),
+(6, 'Jaipur Regals', 'Shooting Guard'),
+(7, 'Kolkata Tigers', 'Point Guard'),
+(8, 'Bengaluru Beast', 'Power Forward'),
+(9, 'Kerala Cobras', 'Small Forward'),
+(10, 'Pune Peshwas', 'Point Guard'),
+(11, 'Haryana Gold', 'Shooting Guard'),
+(12, 'Goa Snipers', 'Small Forward'),
+(13, 'Nagpur Royals', 'Power Forward'),
+(14, 'Ahmedabad Wonders', 'Point Guard'),
+(15, 'Assam Flyers', 'Shooting Guard');
 
 --
 -- Triggers `club`
@@ -104,21 +114,14 @@ CREATE TABLE IF NOT EXISTS `delete_logs` (
   `action` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `time` timestamp NOT NULL,
   UNIQUE KEY `id` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `delete_logs`
 --
 
 INSERT INTO `delete_logs` (`id`, `action`, `time`) VALUES
-(14, 'Deleted sucessfully in Players Table', '2024-02-24 03:54:20'),
-(15, 'Deleted sucessfully in Players Table', '2024-02-24 03:54:20'),
-(16, 'Deleted sucessfully in Players Table', '2024-02-24 03:54:20'),
-(17, 'Deleted sucessfully in Players Table', '2024-02-25 12:18:38'),
-(18, 'deleted the position values successfull', '2024-02-25 13:27:41'),
-(19, 'deleted successfull from the table specific performance', '2024-02-25 14:15:35'),
-(20, 'deleted successfull from the table general performance', '2024-02-25 14:35:55'),
-(21, 'deleted successfull from the table club', '2024-02-25 14:36:27');
+(1, 'Deleted sucessfully in Players Table', '2024-03-22 05:10:54');
 
 -- --------------------------------------------------------
 
@@ -142,7 +145,21 @@ CREATE TABLE IF NOT EXISTS `gp` (
 
 INSERT INTO `gp` (`PLAYER_ID`, `STRENGTH`, `POWER`, `ENDURANCE`, `CORDINATION`) VALUES
 (1, 8, 8, 8, 8),
-(2, 8, 8, 8, 7);
+(2, 8, 8, 8, 7),
+(3, 8, 7, 8, 8),
+(4, 8, 9, 7, 8),
+(5, 8, 7, 9, 8),
+(6, 8, 8, 8, 8),
+(7, 9, 8, 7, 8),
+(8, 7, 8, 9, 7),
+(9, 8, 8, 7, 8),
+(10, 8, 7, 8, 8),
+(11, 7, 8, 8, 8),
+(12, 8, 7, 8, 8),
+(13, 7, 8, 8, 8),
+(14, 8, 7, 8, 8),
+(15, 8, 8, 7, 8),
+(16, 8, 9, 8, 9);
 
 --
 -- Triggers `gp`
@@ -185,31 +202,111 @@ CREATE TABLE IF NOT EXISTS `insert_logs` (
   `action` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `time` timestamp NOT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `insert_logs`
 --
 
 INSERT INTO `insert_logs` (`id`, `action`, `time`) VALUES
-(6, 'inserted sucessfully in players table', '2024-02-23 15:36:18'),
-(7, 'inserted sucessfully in players table', '2024-02-23 15:36:53'),
-(8, 'inserted sucessfully in players table', '2024-02-23 15:37:12'),
-(9, 'inserted into position successfull', '2024-02-23 15:37:31'),
-(10, 'inserted into position successfull', '2024-02-23 15:37:44'),
-(11, 'inserted into position successfull', '2024-02-23 15:38:03'),
-(12, 'inserted successfull in specific performance', '2024-02-23 15:38:52'),
-(13, 'inserted successfull in specific performance', '2024-02-23 15:39:11'),
-(14, 'inserted successfull in specific performance', '2024-02-23 15:39:27'),
-(15, 'inserted successfull in general performance', '2024-02-23 15:40:07'),
-(16, 'inserted successfull in general performance', '2024-02-23 15:40:18'),
-(17, 'inserted successfull in general performance', '2024-02-23 15:41:19'),
-(18, 'inserted successfull in club', '2024-02-23 15:41:54'),
-(19, 'inserted successfull in club', '2024-02-23 15:42:28'),
-(20, 'inserted successfull in club', '2024-02-23 15:43:09'),
-(21, 'inserted sucessfully in players table', '2024-02-25 12:12:44'),
-(22, 'inserted sucessfully in players table', '2024-02-25 12:13:06'),
-(23, 'inserted sucessfully in players table', '2024-02-25 12:26:17');
+(1, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(2, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(3, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(4, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(5, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(6, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(7, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(8, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(9, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(10, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(11, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(12, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(13, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(14, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(15, 'inserted sucessfully in players table', '2024-03-22 04:18:07'),
+(16, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(17, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(18, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(19, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(20, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(21, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(22, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(23, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(24, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(25, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(26, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(27, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(28, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(29, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(30, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(31, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(32, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(33, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(34, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(35, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(36, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(37, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(38, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(39, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(40, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(41, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(42, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(43, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(44, 'inserted sucessfully in performance table', '2024-03-22 04:19:15'),
+(45, 'inserted successfull in general performance', '2024-03-22 04:19:15'),
+(46, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(47, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(48, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(49, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(50, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(51, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(52, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(53, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(54, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(55, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(56, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(57, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(58, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(59, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(60, 'inserted successfull in specific performance', '2024-03-22 04:19:46'),
+(61, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(62, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(63, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(64, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(65, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(66, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(67, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(68, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(69, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(70, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(71, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(72, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(73, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(74, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(75, 'inserted into position successfull', '2024-03-22 04:22:47'),
+(76, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(77, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(78, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(79, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(80, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(81, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(82, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(83, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(84, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(85, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(86, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(87, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(88, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(89, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(90, 'inserted successfull in club', '2024-03-22 04:23:22'),
+(91, 'inserted sucessfully in players table', '2024-03-22 05:06:42'),
+(92, 'inserted sucessfully in performance table', '2024-03-22 05:07:19'),
+(93, 'inserted successfull in general performance', '2024-03-22 05:07:19'),
+(94, 'inserted sucessfully in players table', '2024-03-22 05:11:27'),
+(95, 'inserted sucessfully in performance table', '2024-03-22 05:12:32'),
+(96, 'inserted successfull in general performance', '2024-03-22 05:12:32'),
+(97, 'inserted successfull in specific performance', '2024-03-22 05:13:56'),
+(98, 'inserted sucessfully in players table', '2024-03-23 14:47:01');
 
 -- --------------------------------------------------------
 
@@ -224,6 +321,28 @@ CREATE TABLE IF NOT EXISTS `performance` (
   `GP_AVG` float DEFAULT NULL,
   PRIMARY KEY (`PLAYER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `performance`
+--
+
+INSERT INTO `performance` (`PLAYER_ID`, `SP_AVG`, `GP_AVG`) VALUES
+(1, 8, 8),
+(2, 7.33333, 7.75),
+(3, 7.16667, 7.75),
+(4, 7.5, 8),
+(5, 7.66667, 8),
+(6, 7.33333, 8),
+(7, 7.5, 8),
+(8, 7.33333, 7.75),
+(9, 7.5, 7.75),
+(10, 7.5, 7.75),
+(11, 7.5, 7.75),
+(12, 7.33333, 7.75),
+(13, 7.5, 7.75),
+(14, 7.5, 7.75),
+(15, 7.33333, 7.75),
+(16, 7, 8.5);
 
 --
 -- Triggers `performance`
@@ -264,8 +383,23 @@ CREATE TABLE IF NOT EXISTS `players` (
 --
 
 INSERT INTO `players` (`PLAYER_ID`, `P_NAME`, `P_AGE`, `P_STATE`) VALUES
-(1, 'AJAY', 25, 'KARNATAKA'),
-(2, 'SRI', 22, 'TAMILNADU');
+(1, 'Rahul', 25, 'Maharashtra'),
+(2, 'Priya', 23, 'Tamil Nadu'),
+(3, 'Rohan', 27, 'Uttar Pradesh'),
+(4, 'Nisha', 21, 'Kerala'),
+(5, 'Vikram', 28, 'Karnataka'),
+(6, 'Aarti', 24, 'Gujarat'),
+(7, 'Ajay', 26, 'Punjab'),
+(8, 'Neha', 22, 'Madhya Pradesh'),
+(9, 'Ankit', 29, 'Rajasthan'),
+(10, 'Pooja', 20, 'Haryana'),
+(11, 'Sunil', 30, 'West Bengal'),
+(12, 'Kavita', 19, 'Odisha'),
+(13, 'Manoj', 31, 'Bihar'),
+(14, 'Ritu', 18, 'Assam'),
+(15, 'Sanjay', 32, 'Telangana'),
+(16, 'HARSHITH S GOWDA', 22, 'Karnataka'),
+(17, 'ajay', 25, 'Karnataka');
 
 --
 -- Triggers `players`
@@ -309,7 +443,20 @@ CREATE TABLE IF NOT EXISTS `p_position` (
 
 INSERT INTO `p_position` (`PLAYER_ID`, `POINT_GUARD`, `SHOOTING_GUARD`, `POST`, `SMALL_FORWARD`, `POWER_FORWARD`) VALUES
 (1, 9, 9, 9, 8, 9),
-(3, 7, 7, 7, 7, 5);
+(2, 7, 7, 7, 7, 5),
+(3, 8, 8, 8, 7, 8),
+(4, 9, 7, 6, 8, 7),
+(5, 8, 8, 7, 7, 8),
+(6, 7, 8, 7, 6, 8),
+(7, 9, 7, 8, 8, 7),
+(8, 7, 7, 8, 7, 8),
+(9, 8, 8, 7, 8, 7),
+(10, 7, 7, 7, 8, 8),
+(11, 8, 8, 8, 7, 7),
+(12, 7, 8, 8, 8, 7),
+(13, 8, 7, 7, 8, 7),
+(14, 7, 8, 8, 8, 7),
+(15, 8, 7, 8, 7, 7);
 
 --
 -- Triggers `p_position`
@@ -353,8 +500,22 @@ CREATE TABLE IF NOT EXISTS `sp` (
 --
 
 INSERT INTO `sp` (`PLAYER_ID`, `DRIBBLING`, `PASSING`, `BTFW`, `INDIVIDUAL_DEFENCE`, `PSBH`, `SR`) VALUES
-(1, 8, 8, 8, 8, 8, 8),
-(2, 8, 8, 8, 8, 7, 8);
+(1, 8, 7, 8, 9, 8, 8),
+(2, 7, 8, 6, 7, 8, 8),
+(3, 8, 7, 7, 8, 6, 7),
+(4, 6, 8, 9, 7, 7, 8),
+(5, 8, 6, 7, 9, 8, 8),
+(6, 7, 7, 8, 6, 9, 7),
+(7, 9, 6, 7, 8, 7, 8),
+(8, 7, 9, 8, 7, 6, 7),
+(9, 8, 7, 6, 9, 7, 8),
+(10, 6, 8, 7, 7, 9, 8),
+(11, 7, 6, 9, 8, 7, 8),
+(12, 8, 7, 6, 9, 7, 7),
+(13, 6, 8, 7, 7, 9, 8),
+(14, 7, 6, 9, 8, 7, 8),
+(15, 8, 7, 6, 9, 7, 7),
+(16, 8, 9, 7, 6, 5, 7);
 
 --
 -- Triggers `sp`
@@ -397,21 +558,64 @@ CREATE TABLE IF NOT EXISTS `update_logs` (
   `action` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `time` timestamp NOT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `update_logs`
 --
 
 INSERT INTO `update_logs` (`id`, `action`, `time`) VALUES
-(1, 'UPDATED SUCESSFULLY IN PLAYERS', '2024-02-25 12:13:33'),
-(2, 'UPDATED SUCESSFULLY IN PLAYERS', '2024-02-25 12:26:45'),
-(3, 'update the position values successfull', '2024-02-25 13:27:28'),
-(4, 'update the position values successfull', '2024-02-25 13:27:38'),
-(5, 'update the position values successfull', '2024-02-25 14:12:58'),
-(6, 'insertion is successfull in specific performance ', '2024-02-25 14:29:49'),
-(7, 'insertion is successfull in general performance ', '2024-02-25 14:35:52'),
-(8, 'insertion is successfull in club', '2024-02-25 14:36:24');
+(1, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(2, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(3, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(4, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(5, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(6, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(7, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(8, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(9, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(10, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(11, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(12, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(13, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(14, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(15, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 04:19:46'),
+(16, 'AUTO UPDATED SUCESSFULLY IN PERFORMANCE TABLE', '2024-03-22 05:13:56');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `club`
+--
+ALTER TABLE `club`
+  ADD CONSTRAINT `club_ibfk_1` FOREIGN KEY (`PLAYER_ID`) REFERENCES `players` (`PLAYER_ID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `gp`
+--
+ALTER TABLE `gp`
+  ADD CONSTRAINT `gp_ibfk_1` FOREIGN KEY (`PLAYER_ID`) REFERENCES `players` (`PLAYER_ID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `performance`
+--
+ALTER TABLE `performance`
+  ADD CONSTRAINT `gp` FOREIGN KEY (`PLAYER_ID`) REFERENCES `players` (`PLAYER_ID`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `sp` FOREIGN KEY (`PLAYER_ID`) REFERENCES `players` (`PLAYER_ID`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `p_position`
+--
+ALTER TABLE `p_position`
+  ADD CONSTRAINT `p_position_ibfk_1` FOREIGN KEY (`PLAYER_ID`) REFERENCES `players` (`PLAYER_ID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `sp`
+--
+ALTER TABLE `sp`
+  ADD CONSTRAINT `sp_ibfk_1` FOREIGN KEY (`PLAYER_ID`) REFERENCES `players` (`PLAYER_ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
