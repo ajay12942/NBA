@@ -109,7 +109,7 @@ echo("<td>" . $row["P_NAME"] . "</td> <td>" . $row["P_AGE"] . "</td> <td>" . $ro
 
 }
 else if ($choices == 'AVERAGE SPECIFIC PERFORMANCE' && ctype_digit(strval($input_name))) {
-$sql = "SELECT * FROM PLAYERS P,PERFORMANCE PR WHERE P.PLAYER_ID=PR.PLAYER_ID AND SP_AVG=\"$input_name\"";
+$sql = "SELECT * FROM PLAYERS P,PERFORMANCE PR WHERE P.PLAYER_ID=PR.PLAYER_ID AND SP_AVG>=\"$input_name\"";
 ?>
 </tbody>
 </table>
@@ -145,7 +145,7 @@ echo("<td>" . $row["P_NAME"] . "</td> <td>" . $row["P_AGE"] . "</td> <td>" . $ro
 }
 
 else if ($choices == 'AVERAGE GENERAL PERFORMANCE' && ctype_digit(strval($input_name))) {
-    $sql = "SELECT * FROM PLAYERS P,PERFORMANCE PR WHERE P.PLAYER_ID=PR.PLAYER_ID AND GP_AVG=\"$input_name\"";
+    $sql = "SELECT * FROM PLAYERS P,PERFORMANCE PR WHERE P.PLAYER_ID=PR.PLAYER_ID AND GP_AVG>=\"$input_name\"";
     ?>
     </tbody>
     </table>

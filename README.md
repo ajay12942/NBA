@@ -62,9 +62,10 @@ Installing WAMP Web Server and running a local server on your machine is crucial
 ### 3.4 Running the Project
 
 1. Open a new tab in your web browser.
-2. Type the following URL: "http://localhost/your_project_folder/index.html" (replace "your_project_folder" with the actual folder name where you've stored the project files).
-3. Press Enter to load the NBA Management System application.
-4. Explore the functionalities and features provided by the application.
+2. Before that paste the you project folder in the following path "C:\wamp64\www\your_project_folder"
+3. Type the following URL: "http://localhost/your_project_folder/index.html" (replace "your_project_folder" with the actual folder name where you've stored the project files).
+4. Press Enter to load the NBA Management System application.
+5. Explore the functionalities and features provided by the application.
 
 For any further assistance or queries, feel free to reach out via email at ajay12942@gmail.com.
 
